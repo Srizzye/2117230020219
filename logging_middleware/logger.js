@@ -1,8 +1,7 @@
 const axios = require("axios");
-const dotenv = require("dotenv");
-dotenv.config();
 const LOG_API = process.env.LOG_API;
 const TOKEN = process.env.TOKEN;
+console.log(TOKEN);
 // here i used .env for storing the LOG_API and TOKEN values
 
 const allowedStacks = ["backend", "frontend"];
@@ -58,7 +57,7 @@ const logger = async (stack, level, packageName, message) => {
 
     const response = await axios.post(LOG_API, payload, {
       headers: {
-        Authorization: `Bearer ${TOKEN}`,
+        Authorization: `Bearer ${process.env.TOKEN}`,
         "Content-Type": "application/json",
       },
     });
